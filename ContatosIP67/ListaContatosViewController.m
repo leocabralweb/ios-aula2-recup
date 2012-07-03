@@ -182,6 +182,11 @@
     }
 }
 
+-(void)abrirAplicativoComURL:(NSString *)url
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
 -(void)ligar 
 {
     UIDevice *device = [UIDevice currentDevice];
@@ -190,8 +195,7 @@
     if([device.model isEqualToString:@"iPhone"])
     {
         NSString *urlTelefone = [NSString stringWithFormat:@"tel:%@", contatoSelecionado.telefone];
-        NSURL *url = [NSURL URLWithString:urlTelefone];
-        [[UIApplication sharedApplication] openURL:url];
+        [self abrirAplicativoComURL:urlTelefone];
     }else {
         UIAlertView *alerta = [[UIAlertView alloc] initWithTitle:@"Sem celular" 
                                                          message:@"Impossível fazer ligações" 
@@ -224,12 +228,13 @@
 
 -(void)abrirSite 
 {
-    NSLog(@"abrirSite");
+    [self abrirAplicativoComURL:contatoSelecionado.site];
 }
 
 -(void)mostrarMapa 
 {
-    NSLog(@"mostrarMapa");
+    NSString *url = [[NSString stringWithFormat:@"http://maps.google.com/maps?q=%@", contatoSelecionado.endereco] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self abrirAplicativoComURL:url];
 }
 
 
