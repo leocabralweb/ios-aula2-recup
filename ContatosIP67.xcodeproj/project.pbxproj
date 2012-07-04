@@ -17,6 +17,7 @@
 		F51B5574159BBEF50051359F /* FormularioContatoViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F51B5572159BBEF50051359F /* FormularioContatoViewControllerViewController.xib */; };
 		F51B5577159BD8010051359F /* Contato.m in Sources */ = {isa = PBXBuildFile; fileRef = F51B5576159BD8010051359F /* Contato.m */; };
 		F51B557A159BE83C0051359F /* ListaContatosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51B5579159BE83C0051359F /* ListaContatosViewController.m */; };
+		F5E6944915A506B10002E260 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5E6944815A506B10002E260 /* icon.png */; };
 		F5E96FF915A3AAF500895D47 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E96FF815A3AAF500895D47 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		F51B5578159BE83C0051359F /* ListaContatosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaContatosViewController.h; sourceTree = "<group>"; };
 		F51B5579159BE83C0051359F /* ListaContatosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaContatosViewController.m; sourceTree = "<group>"; };
 		F59A66A215A256EA0026D95A /* ListaContatosProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListaContatosProtocol.h; sourceTree = "<group>"; };
+		F5E6944815A506B10002E260 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5E96FF815A3AAF500895D47 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 		F51B5560159BB4A70051359F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5E6944815A506B10002E260 /* icon.png */,
 				F51B5561159BB4A70051359F /* ContatosIP67-Info.plist */,
 				F51B5562159BB4A70051359F /* InfoPlist.strings */,
 				F51B5565159BB4A70051359F /* main.m */,
@@ -166,6 +169,7 @@
 			files = (
 				F51B5564159BB4A70051359F /* InfoPlist.strings in Resources */,
 				F51B5574159BBEF50051359F /* FormularioContatoViewControllerViewController.xib in Resources */,
+				F5E6944915A506B10002E260 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
