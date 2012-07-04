@@ -16,7 +16,7 @@
 @implementation FormularioContatoViewControllerViewController
 
 @synthesize nome, email, telefone, endereco, site, botaoFoto;
-@synthesize delegate, contato;
+@synthesize delegate, contato, campoAtual;
 
 - (id) init {
     
@@ -188,6 +188,53 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField == nome)
+        [telefone becomeFirstResponder];
+    
+    else if(textField == telefone)
+        [email becomeFirstResponder];
+    
+    else if(textField == email)
+        [endereco becomeFirstResponder];
+    
+    else if(textField == endereco)
+        [site becomeFirstResponder];
+    
+    else if(textField == site)
+    {
+        [textField resignFirstResponder];
+        [self criaContato];
+    }
+    
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.campoAtual = textField;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    self.campoAtual = nil;
+}
+
+-(void)escondeTeclado:(UIGestureRecognizer *)gesture
+{
+    /*UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *) gesture;
+    
+    if(swipe.direction == UISwipeGestureRecognizerDirectionDown && self.campoAtual)
+        [self.campoAtual resignFirstResponder];*/
+    
+    if(self.campoAtual)
+    {
+        NSLog(@"escondeTeclado");
+        [self.campoAtual resignFirstResponder];
+        
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -202,6 +249,16 @@
         if(self.contato.foto)
             [botaoFoto setImage:self.contato.foto forState:UIControlStateNormal];
     }
+    
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] 
+                                         initWithTarget:self 
+                                         action:@selector(escondeTeclado:)];
+    
+    /*UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] 
+                                         initWithTarget:self 
+                                         action:@selector(escondeTeclado:)];*/
+    
+    [self.view addGestureRecognizer:gesture];
 }
 
 - (void)viewDidUnload
