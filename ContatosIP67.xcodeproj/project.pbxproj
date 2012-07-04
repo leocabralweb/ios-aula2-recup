@@ -90,7 +90,6 @@
 			children = (
 				F51B5568159BB4A70051359F /* AppDelegate.h */,
 				F51B5569159BB4A70051359F /* AppDelegate.m */,
-				F51B5560159BB4A70051359F /* Supporting Files */,
 				F51B5570159BBEF50051359F /* FormularioContatoViewControllerViewController.h */,
 				F51B5571159BBEF50051359F /* FormularioContatoViewControllerViewController.m */,
 				F51B5572159BBEF50051359F /* FormularioContatoViewControllerViewController.xib */,
@@ -99,6 +98,7 @@
 				F51B5578159BE83C0051359F /* ListaContatosViewController.h */,
 				F51B5579159BE83C0051359F /* ListaContatosViewController.m */,
 				F59A66A215A256EA0026D95A /* ListaContatosProtocol.h */,
+				F51B5560159BB4A70051359F /* Supporting Files */,
 			);
 			path = ContatosIP67;
 			sourceTree = "<group>";

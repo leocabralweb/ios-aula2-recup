@@ -15,7 +15,7 @@
 
 @implementation FormularioContatoViewControllerViewController
 
-@synthesize nome, email, telefone, endereco, site;
+@synthesize nome, email, telefone, endereco, site, botaoFoto;
 @synthesize delegate, contato;
 
 - (id) init {
@@ -61,12 +61,14 @@
         self.contato = [[Contato alloc] init];
     }
     
-    
     self.contato.nome = nome.text;
     self.contato.telefone = telefone.text;
     self.contato.email = email.text;
     self.contato.endereco = endereco.text;
     self.contato.site = site.text;
+    
+    if(botaoFoto.imageView.image)
+        self.contato.foto = botaoFoto.imageView.image;
     
     return self.contato;
     
@@ -140,6 +142,27 @@
     
 }
 
+-(IBAction)trocaFoto:(id)sender
+{
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        // usa a camera
+    }else {
+        UIImagePickerController *images = [[UIImagePickerController alloc] init];
+        images.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        images.allowsEditing = YES;
+        images.delegate = self;
+        [self presentModalViewController:images animated:YES];
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *imagem = [info objectForKey:UIImagePickerControllerEditedImage];
+    [self.botaoFoto setImage:imagem forState:UIControlStateNormal];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -150,6 +173,9 @@
         email.text = self.contato.email;
         endereco.text = self.contato.endereco;
         site.text = self.contato.site;
+
+        if(self.contato.foto)
+            [botaoFoto setImage:self.contato.foto forState:UIControlStateNormal];
     }
 }
 
@@ -158,6 +184,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.contato = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
