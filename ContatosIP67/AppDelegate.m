@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "FormularioContatoViewControllerViewController.h"
 #import "ListaContatosViewController.h"
+#import "MapaViewController.h"
 
 @implementation AppDelegate
 
@@ -28,25 +29,33 @@
     // self.contatos = [[NSMutableArray alloc] init];
     NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDirectory, YES);
     NSString *documentsDir = [dirs objectAtIndex:0];
+    
     self.arquivoContatos = [NSString stringWithFormat:@"%@/maroto", documentsDir];
+    
     NSLog(@"%@", self.arquivoContatos);
+    
     self.contatos = [NSKeyedUnarchiver unarchiveObjectWithFile:self.arquivoContatos];
+    
     if(!self.contatos){
         self.contatos = [[NSMutableArray alloc] init];
     }
     
     ListaContatosViewController *lista =
     [[ListaContatosViewController alloc] init];
-    /* Formulário como tela principal
-     self.window.rootViewController = lista; */
-    
        
     lista.contatos = self.contatos;
     
     UINavigationController *nav = 
     [[UINavigationController alloc]
      initWithRootViewController:lista];
-    self.window.rootViewController = nav;
+    
+    MapaViewController *mapa = [[MapaViewController alloc] init];
+    
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    
+    tab.viewControllers = [NSArray arrayWithObjects:nav, mapa, nil];
+    
+    self.window.rootViewController = tab;
 
     
     self.window.backgroundColor = [UIColor whiteColor];

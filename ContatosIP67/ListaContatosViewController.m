@@ -18,7 +18,12 @@
 - (id) init
 {
     if(self = [super init]){
-        self.navigationItem.title = @"Contato";
+        self.title = @"Contatos";
+        
+        //self.tabBarItem.title = @"Contatos";
+        self.tabBarItem.image = [UIImage imageNamed:@"lista-contatos.png"];
+        
+        //self.navigationItem.title = @"Contato";
         self.navigationItem.rightBarButtonItem = 
         [[UIBarButtonItem alloc] 
          initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
