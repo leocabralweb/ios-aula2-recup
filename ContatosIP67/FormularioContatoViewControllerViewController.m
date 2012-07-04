@@ -146,14 +146,39 @@
 {
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        // usa a camera
+        UIActionSheet *opcoes = [[UIActionSheet alloc] initWithTitle:@"Escolha a forma" 
+                                                            delegate:self 
+                                                   cancelButtonTitle:@"Cancelar" 
+                                              destructiveButtonTitle:nil 
+                                                   otherButtonTitles:@"Camera", @"Galeria", nil];
+        [opcoes showInView:self.view]; 
     }else {
-        UIImagePickerController *images = [[UIImagePickerController alloc] init];
-        images.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        images.allowsEditing = YES;
-        images.delegate = self;
-        [self presentModalViewController:images animated:YES];
+        [self openImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{    
+    switch (buttonIndex) {
+        case 0:
+            [self openImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
+            break;
+        case 1:
+            [self openImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            break;   
+        default:
+            break;
+    }
+}
+
+-(void) openImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
+{
+    UIImagePickerController *images = [[UIImagePickerController alloc] init];
+    images.allowsEditing = YES;
+    images.delegate = self;
+    images.sourceType = sourceType;
+        
+    [self presentModalViewController:images animated:YES];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

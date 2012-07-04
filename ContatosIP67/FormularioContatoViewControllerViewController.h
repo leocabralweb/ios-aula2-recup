@@ -10,7 +10,7 @@
 #import "Contato.h"
 #import "ListaContatosProtocol.h"
 
-@interface FormularioContatoViewControllerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface FormularioContatoViewControllerViewController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property IBOutlet UITextField *nome;
 @property IBOutlet UITextField *telefone;
