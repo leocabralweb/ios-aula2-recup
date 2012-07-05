@@ -16,7 +16,7 @@
 @implementation FormularioContatoViewControllerViewController
 
 @synthesize nome, email, telefone, endereco, site, botaoFoto;
-@synthesize delegate, contato, campoAtual;
+@synthesize delegate, contato, campoAtual, ultimoVisivel, tamanhoInicialDoScroll;
 
 - (id) init {
     
@@ -239,6 +239,9 @@
 {
     [super viewDidLoad];
     
+    self.ultimoVisivel = self.site;
+    self.tamanhoInicialDoScroll = self.view.frame.size;
+    
     if(self.contato){
         nome.text = self.contato.nome;
         telefone.text = self.contato.telefone;
@@ -259,6 +262,46 @@
                                          action:@selector(escondeTeclado:)];*/
     
     [self.view addGestureRecognizer:gesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                           selector:@selector(tecladoApareceu:) 
+                                               name:UIKeyboardDidShowNotification 
+                                             object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                           selector:@selector(tecladoSumiu:) 
+                                               name:UIKeyboardDidHideNotification 
+                                             object:nil];
+    
+}
+
+-(void)tecladoApareceu:(NSNotification *)notification
+{
+    NSLog(@"Teclado apareceu");
+    
+    NSDictionary * dic = [notification userInfo];
+    CGRect areaTotal = [[dic objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGSize tamanhoTeclado = areaTotal.size;
+    
+    float ultimoPixelVisivel = self.ultimoVisivel.frame.origin.y + self.ultimoVisivel.frame.size.height;
+    float tecladoPrimeiroPixelVisivel = self.view.frame.size.height - tamanhoTeclado.height;
+    
+    float pixelsEscondidos = (ultimoPixelVisivel - tecladoPrimeiroPixelVisivel) + 10;
+    
+    UIScrollView *scroll = (UIScrollView *) self.view;
+    scroll.contentSize = self.view.frame.size;
+    CGSize size = scroll.contentSize;
+    
+    if(pixelsEscondidos > 0) {
+        size.height += (pixelsEscondidos);
+        scroll.contentSize = size;
+    }
+    
+}
+
+-(void)tecladoSumiu:(NSNotification *)notification
+{
+    NSLog(@"Teclado sumiu");
 }
 
 - (void)viewDidUnload

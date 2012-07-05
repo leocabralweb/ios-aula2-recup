@@ -107,7 +107,6 @@
 		F51B555F159BB4A70051359F /* ContatosIP67 */ = {
 			isa = PBXGroup;
 			children = (
-				F5E6945715A50D400002E260 /* Imagens */,
 				F51B5568159BB4A70051359F /* AppDelegate.h */,
 				F51B5569159BB4A70051359F /* AppDelegate.m */,
 				F51B5570159BBEF50051359F /* FormularioContatoViewControllerViewController.h */,
@@ -121,6 +120,7 @@
 				F5E6945015A509BB0002E260 /* MapaViewController.h */,
 				F5E6945115A509BB0002E260 /* MapaViewController.m */,
 				F5E6945215A509BB0002E260 /* MapaViewController.xib */,
+				F5E6945715A50D400002E260 /* Imagens */,
 				F51B5560159BB4A70051359F /* Supporting Files */,
 			);
 			path = ContatosIP67;

@@ -20,6 +20,8 @@
 @property IBOutlet UIButton *botaoFoto;
 @property id<ListaContatosProtocol> delegate;
 @property UITextField *campoAtual;
+@property UIView *ultimoVisivel;
+@property CGSize tamanhoInicialDoScroll;
 
 @property (strong) Contato *contato;
 
