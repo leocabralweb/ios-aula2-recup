@@ -279,22 +279,28 @@
 {
     NSLog(@"Teclado apareceu");
     
+    // Descobrindo tamanho do teclado na tela
     NSDictionary * dic = [notification userInfo];
-    CGRect areaTotal = [[dic objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    CGSize tamanhoTeclado = areaTotal.size;
+    CGRect areaDoTeclado = [[dic objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGSize tamanhoTeclado = areaDoTeclado.size;
     
-    float ultimoPixelVisivel = self.ultimoVisivel.frame.origin.y + self.ultimoVisivel.frame.size.height;
-    float tecladoPrimeiroPixelVisivel = self.view.frame.size.height - tamanhoTeclado.height;
-    
-    float pixelsEscondidos = (ultimoPixelVisivel - tecladoPrimeiroPixelVisivel) + 10;
-    
+    // Copiando o tamnho do scroll (parte "scrolável")
     UIScrollView *scroll = (UIScrollView *) self.view;
     scroll.contentSize = self.view.frame.size;
-    CGSize size = scroll.contentSize;
+    
+    // Qual porção da tela quero ver mesmo quando o teclado aparece
+    float ultimoPixelVisivel = self.ultimoVisivel.frame.origin.y + self.ultimoVisivel.frame.size.height;
+    
+    // Posição onde começa o teclado
+    float tecladoPrimeiroPixelVisivel = self.view.frame.size.height - tamanhoTeclado.height;
+    
+    // Novo tamanho escrolável, baseado no último pixel visível
+    float pixelsEscondidos = (ultimoPixelVisivel - tecladoPrimeiroPixelVisivel) + 10;
     
     if(pixelsEscondidos > 0) {
-        size.height += (pixelsEscondidos);
-        scroll.contentSize = size;
+        CGSize scrollContentSize = scroll.contentSize;
+        scrollContentSize.height += (pixelsEscondidos);
+        scroll.contentSize = scrollContentSize;
     }
     
 }
