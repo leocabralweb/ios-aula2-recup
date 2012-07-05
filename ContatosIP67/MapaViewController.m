@@ -7,12 +7,16 @@
 //
 
 #import "MapaViewController.h"
+#import <MapKit/MKUserTrackingBarButtonItem.h>
+#import <MapKit/MKMapView.h>
 
 @interface MapaViewController ()
 
 @end
 
 @implementation MapaViewController
+
+@synthesize mapa;
 
 -(id)init
 {
@@ -22,8 +26,14 @@
         //self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:0];
         self.title = @"Mapa";
         self.tabBarItem.image = [UIImage imageNamed:@"mapa-contatos.png"];
+        
     }
     return self;
+}
+
+-(void)centralizaMapa
+{
+    // do
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.navigationItem.leftBarButtonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapa];
 }
 
 - (void)viewDidUnload

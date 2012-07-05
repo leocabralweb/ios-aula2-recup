@@ -53,7 +53,9 @@
     
     UITabBarController *tab = [[UITabBarController alloc] init];
     
-    tab.viewControllers = [NSArray arrayWithObjects:nav, mapa, nil];
+    UINavigationController *mapaNav = [[UINavigationController alloc] initWithRootViewController:mapa];
+    
+    tab.viewControllers = [NSArray arrayWithObjects:nav, mapaNav, nil];
     
     self.window.rootViewController = tab;
 
