@@ -279,6 +279,8 @@
 {
     NSLog(@"Teclado apareceu");
     
+    // Alterando tamanho do scrollView ============================
+    
     // Descobrindo tamanho do teclado na tela
     NSDictionary * dic = [notification userInfo];
     CGRect areaDoTeclado = [[dic objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
@@ -303,11 +305,29 @@
         scroll.contentSize = scrollContentSize;
     }
     
+    // Animação ============================
+    
+    // Descobre campo visivel considerando o tamanho do teclado
+    CGRect areaVisivel = self.view.frame;
+    areaVisivel.size.height -= tamanhoTeclado.height;
+    
+    if(self.campoAtual != nil) {
+        CGPoint origin = self.campoAtual.frame.origin;
+        origin.y += self.campoAtual.frame.size.height;
+        BOOL campoAtualEscondido = !CGRectContainsPoint(areaVisivel, origin);
+        
+        if(campoAtualEscondido) {
+            float yParaScroll = (origin.y + 10) - ultimoPixelVisivel;
+            CGPoint scrollAteAparecer = CGPointMake(0.0, yParaScroll);
+            [scroll setContentOffset:scrollAteAparecer animated:YES];
+        }
+    }
 }
 
 -(void)tecladoSumiu:(NSNotification *)notification
 {
-    NSLog(@"Teclado sumiu");
+    UIScrollView *scroll = (UIScrollView *) self.view;
+    scroll.contentSize = tamanhoInicialDoScroll;
 }
 
 - (void)viewDidUnload
