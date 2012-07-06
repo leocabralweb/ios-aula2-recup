@@ -8,6 +8,7 @@
 
 #import "FormularioContatoViewControllerViewController.h"
 #import "Contato.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface FormularioContatoViewControllerViewController ()
 
@@ -17,6 +18,8 @@
 
 @synthesize nome, email, telefone, endereco, site, botaoFoto;
 @synthesize delegate, contato, campoAtual, ultimoVisivel, tamanhoInicialDoScroll;
+@synthesize latitude, longitude;
+@synthesize tecladoCloseGesture;
 
 - (id) init {
     
@@ -66,6 +69,8 @@
     self.contato.email = email.text;
     self.contato.endereco = endereco.text;
     self.contato.site = site.text;
+    self.contato.latidude = latitude.text;
+    self.contato.longitude = longitude.text;
     
     if(botaoFoto.imageView.image)
         self.contato.foto = botaoFoto.imageView.image;
@@ -212,11 +217,13 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
-{
+{   
+    [self.view addGestureRecognizer:tecladoCloseGesture];
     self.campoAtual = textField;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self.view removeGestureRecognizer:tecladoCloseGesture];
     self.campoAtual = nil;
 }
 
@@ -248,20 +255,22 @@
         email.text = self.contato.email;
         endereco.text = self.contato.endereco;
         site.text = self.contato.site;
+        latitude.text = self.contato.latidude;
+        longitude.text = self.contato.longitude;
 
         if(self.contato.foto)
             [botaoFoto setImage:self.contato.foto forState:UIControlStateNormal];
     }
     
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] 
-                                         initWithTarget:self 
-                                         action:@selector(escondeTeclado:)];
+    // Cria o GEstrure que ira fechar o teclado com o tap na tela.
+    // Sua atribuição só ocorre quando o teclado é chamado
+    tecladoCloseGesture = [[UITapGestureRecognizer alloc] 
+                           initWithTarget:self 
+                           action:@selector(escondeTeclado:)];
     
     /*UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] 
-                                         initWithTarget:self 
-                                         action:@selector(escondeTeclado:)];*/
-    
-    [self.view addGestureRecognizer:gesture];
+     initWithTarget:self 
+     action:@selector(escondeTeclado:)];*/
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                            selector:@selector(tecladoApareceu:) 
@@ -332,6 +341,29 @@
     UIScrollView *scroll = (UIScrollView *) self.view;
     [scroll setContentSize:tamanhoInicialDoScroll];
     [scroll setContentOffset:CGPointZero animated:YES];
+}
+
+-(IBAction)localiza:(id)sender
+{
+    NSLog(@"INI LOCALIZA");
+    CLGeocoder *geo = [[CLGeocoder alloc] init];
+    [geo geocodeAddressString:self.endereco.text
+            completionHandler: ^(NSArray * resultados, NSError * erro){
+                if(erro == nil && [resultados count] > 0)
+                {
+                    CLPlacemark * localizacao = [resultados objectAtIndex:0];
+                    CLLocationCoordinate2D coord = localizacao.location.coordinate;
+                    
+                    self.latitude.text = [NSString stringWithFormat:@"%f", coord.latitude];
+                    self.longitude.text = [NSString stringWithFormat:@"%f", coord.longitude];
+                } else {
+                    if(erro != nil)
+                        NSLog(@"ERRO LOCALIZA: %@", erro);
+                    else
+                        NSLog(@"ERRO RESULTADOS LOCALIZA: %@", resultados);
+                }
+            }];
+    
 }
 
 - (void)viewDidUnload

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F508061F15A78D9200BBD530 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F508061E15A78D9200BBD530 /* CoreLocation.framework */; };
 		F51B555A159BB4A70051359F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B5559159BB4A70051359F /* UIKit.framework */; };
 		F51B555C159BB4A70051359F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B555B159BB4A70051359F /* Foundation.framework */; };
 		F51B555E159BB4A70051359F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B555D159BB4A70051359F /* CoreGraphics.framework */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F508061E15A78D9200BBD530 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F51B5555159BB4A70051359F /* ContatosIP67.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContatosIP67.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51B5559159BB4A70051359F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F51B555B159BB4A70051359F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F508061F15A78D9200BBD530 /* CoreLocation.framework in Frameworks */,
 				F5E6945615A50BC80002E260 /* MapKit.framework in Frameworks */,
 				F5E96FF915A3AAF500895D47 /* MessageUI.framework in Frameworks */,
 				F51B555A159BB4A70051359F /* UIKit.framework in Frameworks */,
@@ -95,6 +98,7 @@
 		F51B5558159BB4A70051359F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F508061E15A78D9200BBD530 /* CoreLocation.framework */,
 				F5E6945515A50BC80002E260 /* MapKit.framework */,
 				F5E96FF815A3AAF500895D47 /* MessageUI.framework */,
 				F51B5559159BB4A70051359F /* UIKit.framework */,

@@ -23,9 +23,15 @@
 @property UIView *ultimoVisivel;
 @property CGSize tamanhoInicialDoScroll;
 
+@property UITapGestureRecognizer *tecladoCloseGesture;
+
+@property IBOutlet UITextField *latitude;
+@property IBOutlet UITextField *longitude;
+
 @property (strong) Contato *contato;
 
 - (id) initWithContato:(Contato *)_contato;
 -(IBAction)trocaFoto:(id)sender;
+-(IBAction)localiza:(id)sender;
 
 @end

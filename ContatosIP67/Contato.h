@@ -10,11 +10,13 @@
 
 @interface Contato : NSObject<NSCoding>
 
-@property(strong) NSString *nome;
-@property(strong) NSString *telefone;
-@property(strong) NSString *email;
-@property(strong) NSString *endereco;
-@property(strong) NSString *site;
-@property(strong) UIImage *foto;
+@property (strong) NSString *nome;
+@property (strong) NSString *telefone;
+@property (strong) NSString *email;
+@property (strong) NSString *endereco;
+@property (strong) NSString *site;
+@property (strong) NSString *latidude;
+@property (strong) NSString *longitude;
+@property (strong) UIImage *foto;
 
 @end
