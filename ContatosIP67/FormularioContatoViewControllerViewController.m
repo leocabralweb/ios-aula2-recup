@@ -318,6 +318,9 @@
         
         if(campoAtualEscondido) {
             float yParaScroll = (origin.y + 10) - areaVisivel.size.height;
+            if (self.tabBarController) {
+                yParaScroll -= self.tabBarController.tabBar.frame.size.height;
+            }
             CGPoint scrollAteAparecer = CGPointMake(0.0, yParaScroll);
             [scroll setContentOffset:scrollAteAparecer animated:YES];
         }
