@@ -240,7 +240,7 @@
     [super viewDidLoad];
     
     self.ultimoVisivel = self.site;
-    self.tamanhoInicialDoScroll = self.view.frame.size;
+    self.tamanhoInicialDoScroll = ((UIScrollView *) self.view).contentSize; //self.view.frame.size;
     
     if(self.contato){
         nome.text = self.contato.nome;
@@ -327,7 +327,8 @@
 -(void)tecladoSumiu:(NSNotification *)notification
 {
     UIScrollView *scroll = (UIScrollView *) self.view;
-    scroll.contentSize = tamanhoInicialDoScroll;
+    [scroll setContentSize:tamanhoInicialDoScroll];
+    [scroll setContentOffset:CGPointZero animated:YES];
 }
 
 - (void)viewDidUnload
