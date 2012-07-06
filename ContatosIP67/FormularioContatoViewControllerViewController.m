@@ -317,7 +317,7 @@
         BOOL campoAtualEscondido = !CGRectContainsPoint(areaVisivel, origin);
         
         if(campoAtualEscondido) {
-            float yParaScroll = (origin.y + 10) - ultimoPixelVisivel;
+            float yParaScroll = (origin.y + 10) - areaVisivel.size.height;
             CGPoint scrollAteAparecer = CGPointMake(0.0, yParaScroll);
             [scroll setContentOffset:scrollAteAparecer animated:YES];
         }
