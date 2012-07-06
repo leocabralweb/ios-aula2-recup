@@ -50,6 +50,7 @@
      initWithRootViewController:lista];
     
     MapaViewController *mapa = [[MapaViewController alloc] init];
+    mapa.contatos = self.contatos;
     
     UITabBarController *tab = [[UITabBarController alloc] init];
     

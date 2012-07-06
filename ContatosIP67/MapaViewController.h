@@ -12,5 +12,6 @@
 @interface MapaViewController : UIViewController
 
 @property IBOutlet MKMapView *mapa;
+@property (weak) NSMutableArray *contatos;
 
 @end

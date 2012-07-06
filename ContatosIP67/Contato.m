@@ -12,6 +12,20 @@
 
 @synthesize nome, telefone, email, endereco, site, foto, latidude, longitude;
 
+- (CLLocationCoordinate2D) coordinate
+{
+    return CLLocationCoordinate2DMake([self.latidude doubleValue], [self.longitude doubleValue]);
+}
+
+- (NSString *) title 
+{
+    return self.nome;
+}
+
+- (NSString *) subtitle 
+{
+    return self.endereco;
+}
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F508061F15A78D9200BBD530 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F508061E15A78D9200BBD530 /* CoreLocation.framework */; };
+		F508062315A7989500BBD530 /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = F508062115A7989500BBD530 /* gps.png */; };
+		F508062415A7989500BBD530 /* gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F508062215A7989500BBD530 /* gps@2x.png */; };
 		F51B555A159BB4A70051359F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B5559159BB4A70051359F /* UIKit.framework */; };
 		F51B555C159BB4A70051359F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B555B159BB4A70051359F /* Foundation.framework */; };
 		F51B555E159BB4A70051359F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51B555D159BB4A70051359F /* CoreGraphics.framework */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		F508061E15A78D9200BBD530 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F508062115A7989500BBD530 /* gps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps.png; sourceTree = "<group>"; };
+		F508062215A7989500BBD530 /* gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps@2x.png"; sourceTree = "<group>"; };
 		F51B5555159BB4A70051359F /* ContatosIP67.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContatosIP67.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51B5559159BB4A70051359F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F51B555B159BB4A70051359F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +149,8 @@
 		F5E6945715A50D400002E260 /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				F508062115A7989500BBD530 /* gps.png */,
+				F508062215A7989500BBD530 /* gps@2x.png */,
 				F5E6945815A50D5E0002E260 /* lista-contatos.png */,
 				F5E6945915A50D5E0002E260 /* lista-contatos@2x.png */,
 				F5E6945A15A50D5E0002E260 /* mapa-contatos.png */,
@@ -211,6 +217,8 @@
 				F5E6945D15A50D5E0002E260 /* lista-contatos@2x.png in Resources */,
 				F5E6945E15A50D5E0002E260 /* mapa-contatos.png in Resources */,
 				F5E6945F15A50D5E0002E260 /* mapa-contatos@2x.png in Resources */,
+				F508062315A7989500BBD530 /* gps.png in Resources */,
+				F508062415A7989500BBD530 /* gps@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

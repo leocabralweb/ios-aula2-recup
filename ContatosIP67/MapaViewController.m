@@ -17,6 +17,7 @@
 @implementation MapaViewController
 
 @synthesize mapa;
+@synthesize contatos;
 
 -(id)init
 {
@@ -43,6 +44,13 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.mapa addAnnotations:self.contatos];
 }
 
 - (void)viewDidLoad
